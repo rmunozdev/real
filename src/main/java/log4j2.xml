@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- For local app (For web config see /WEB-INF/log4j2.xml -->
+<Configuration status="debug">
+	<Filter type="ThresholdFilter" level="all"></Filter>
+	<Appenders>
+		<Console name="defaultPrinter" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+		<Console name="simplePrinter" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH} - %msg%n" />
+		</Console>
+
+		<File name="filePrinter" fileName="E:/tempo/real.log">
+			<PatternLayout>
+				<Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+			</PatternLayout>
+		</File>
+
+	</Appenders>
+	<Loggers>
+		<Logger name="com.rmunoz" level="info" additivity="false">
+			<AppenderRef ref="simplePrinter" />
+		</Logger>
+
+		<Root level="info">
+			<AppenderRef ref="defaultPrinter" />
+		</Root>
+	</Loggers>
+
+</Configuration>
